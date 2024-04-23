@@ -18,14 +18,14 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt()
   deletedAt DateTime?
-  email     String
+  email     String    @unique
   password  String
   firstName String?
   lastName  String?
 
   bookmarks Bookmark[]
 
-  @@map("user")
+  @@map("users")
 }
 
 model Bookmark {
@@ -39,5 +39,5 @@ model Bookmark {
   user   User @relation(fields: [userId], references: [id])
   userId Int
 
-  @@map("bookmark")
+  @@map("bookmarks")
 }
